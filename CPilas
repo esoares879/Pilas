@@ -1,0 +1,83 @@
+
+package Enunciado01;
+
+import java.util.Scanner;
+
+public class CPilas { //se ponen las operaciones que nos pide realizar el ejercicio
+    static Scanner teclado = new Scanner (System.in);
+    //metodos de la pila
+    
+    int tope = 0;//tope es el minimo de la ubicacion de la pila
+    int max; //es el maximo de elementos
+    CAlumno[] pila; //declarando mi arreglo pila
+    CAlumno alu = new CAlumno ();   //se crea objeto de la clase Alumno
+                                    // sirve para trabakar cpon la clase Alumno
+
+    //se crea constructor
+    
+    public CPilas (int max){ // para que traer el valor maximo
+        this.tope=0; // tope es el minimo de la pila
+        this.max= max; // toma el numeor ams grande
+        this.pila = new CAlumno [this.max+1];
+        for (int i =0; i<this.max+1; i++){
+            pila[i] = new CAlumno();
+        }
+    }
+    
+    public CPilas (){ // para traer el valor maximo
+        this.tope=0; // tope es el minimo de la pila
+        this.max= 100; // toma el numeor ams grande
+        this.pila = new CAlumno [this.max+1];
+    }    
+      
+    public int getTope (){
+        return tope; //devuelve el valor del tope
+    }
+    
+    public void vaciarPila (){
+        this.tope = 0;
+    }
+    
+     public boolean IsPilaLlena () {//verificar si la pila esta llena o no
+        if (this.max == this.tope){ //cuando el maximo apunta al tope
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public boolean IsPilaVacia (){ //veirifcamos si la pila esta vacia
+        if(this.tope==0){ //cuadno tope apunta 0
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    
+    public void insertarPila(int pos, String codigo, String nombre,int n1, int n2) {
+       pila[pos].registrar(nombre, codigo, n1, n2);
+       tope++;
+    }
+    
+    public void eliminarPila(){
+        if (this.IsPilaVacia()) {
+            System.out.println("La pila no tiene elementos");
+        }else{          
+            this.tope--;
+        }
+    }
+    
+    public void mostrarPila(){
+        if (this.IsPilaVacia()){
+            System.out.println("No hay elemento para mostrar");
+        }else{
+            System.out.println("\tElementos de la pila\n"
+                    + "\t=====================");
+            for (int i = 0; i<tope; i++){
+                pila[i].Cadena();
+            }
+        } 
+    }
+        
+}
