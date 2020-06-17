@@ -1,0 +1,73 @@
+
+package Enunciado01;
+import java.util.Scanner;
+
+public class Aplica_Pila {
+    
+    static CPilas pila;
+    static Scanner teclado = new Scanner (System.in);
+    
+    public static void main (String [] args){
+        menu();
+    }
+    
+    static void menu(){
+        int opc;
+        do{
+            System.out.println("================");
+            System.out.println("\t MENU");
+            System.out.println("================");
+            System.out.println("1.- Crear Pila");
+            System.out.println("2.- Llenar Datos");
+            System.out.println("3.- Mostrar Datos");
+            System.out.println("4.- Eliminar Datos");
+            System.out.println("================");
+            System.out.println("0.- SALIR");
+            System.out.println("================");
+            System.out.println("Elija una opcion");
+            opc=teclado.nextInt();
+            switch(opc){
+                case 1:
+                    creaPila();
+                    break;
+                case 2:
+                     ingrDatos();
+                    break;
+                case 3:
+                     pila.mostrarPila();
+                    break;
+                case 4:
+                     pila.eliminarPila();
+                    break;
+                case 0:
+                    System.exit(0);
+                    break;
+            }
+        }while (opc !=0);
+    }
+    
+    static void creaPila(){
+        int tam;
+        tam = teclado.nextInt();
+        pila = new CPilas(tam);
+    }
+    
+    static int pos =0;
+    
+    static void ingrDatos (){
+        int n1, n2;
+        String nom, cod;
+        
+        System.out.println("Ingrese codigo del alumno");
+        cod = teclado.next();
+        System.out.println("Ingrese nombre del alumno");
+        nom = teclado.next();
+        System.out.println("Ingrese primera nota [N1]");
+        n1 = teclado.nextInt();
+        System.out.println("Ingrese segunda nota [N1]");
+        n2 = teclado.nextInt();
+        
+        pila.insertarPila(pos, cod, nom, n1, n2);
+        pos++;
+    }
+}
